@@ -1,0 +1,34 @@
+{
+  "name": "pipeline-io",
+  "version": "0.0.1",
+  "description": "pipeline engine with outside connectors and manipulation functions",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "pkg:linux": "PKG_CACHE_PATH=.pkg-cache pkg --config package.json --targets node14-linux-x64 --compress GZip --output .build/pipeline-io index.js",
+    "pkg:windows": "PKG_CACHE_PATH=.pkg-cache pkg --targets node14-windows-x64 --compress GZip --output .build/pipeline-io.exe --options max-old-space-size=1024 index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "pkg": {
+    "scripts": "lib/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalstong/pipeline-io.git"
+  },
+  "keywords": [
+    "pipeline",
+    "io",
+    "processor",
+    "no-code",
+    "low-code"
+  ],
+  "author": "Ricardo Silva aka kalstong",
+  "bugs": {
+    "url": "https://github.com/kalstong/pipeline-io/issues"
+  },
+  "homepage": "https://github.com/kalstong/pipeline-io#readme",
+  "devDependencies": {
+    "pkg": "^5.8.0"
+  }
+}
