@@ -1,0 +1,25 @@
+{
+  "name": "pipeline-io",
+  "version": "0.0.1",
+  "description": "pipeline engine with outside connectors and manipulation functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalstong/pipeline-io.git"
+  },
+  "keywords": [
+    "pipeline",
+    "io",
+    "processor",
+    "no-code",
+    "low-code"
+  ],
+  "author": "Ricardo Silva aka kalstong",
+  "bugs": {
+    "url": "https://github.com/kalstong/pipeline-io/issues"
+  },
+  "homepage": "https://github.com/kalstong/pipeline-io#readme"
+}
