@@ -9,9 +9,6 @@
     "pkg:windows": "PKG_CACHE_PATH=.pkg-cache pkg --targets node14-windows-x64 --compress GZip --output .build/pipeline-io.exe --options max-old-space-size=1024 index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "pkg": {
-    "scripts": "lib/*.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kalstong/pipeline-io.git"
@@ -21,7 +18,8 @@
     "io",
     "processor",
     "no-code",
-    "low-code"
+    "low-code",
+    "ETL"
   ],
   "author": "Ricardo Silva aka kalstong",
   "bugs": {

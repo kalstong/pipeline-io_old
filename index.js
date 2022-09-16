@@ -1,7 +1,6 @@
-const path = require('path')
-const { log, utils } = require(path.join(__dirname, 'lib'))
-const package = require(path.join(__dirname, 'package.json'))
-const engine = require(path.join(__dirname, 'engine'))
+const { log, utils } = require('./lib')
+const package = require('./package.json')
+const engine = require('./engine')
 
 // Boot and welcoming
 process.title = `pipeline-io`

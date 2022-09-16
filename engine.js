@@ -1,6 +1,5 @@
-const path = require('path')
 const isObject = require('lodash/isObject')
-const { PipelineStructureError } = require(path.join(__dirname, 'lib/errors'))
+const { PipelineStructureError } = require('./lib/errors')
 
 async function load(pipeline) {
 
