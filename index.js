@@ -5,7 +5,7 @@ const engine = require(path.join(__dirname, 'engine'))
 
 // Boot and welcoming
 process.title = `pipeline-io`
-log('boot').info(`Welcome to pipeline-io v.${package.version}!\nFor more information please visit ${package.homepage}`)
+log('boot').info(`Welcome to pipeline-io v.${package.version}!\nFor more information please visit ${package.homepage}\n`)
 
 // Load Arguments
 let args = {}
