@@ -1,3 +1,4 @@
+const YAML = require('yaml')
 const { log, utils } = require('./lib')
 const package = require('./package.json')
 const engine = require('./engine')
@@ -28,7 +29,7 @@ try {
         process.exit(0)
     }
 
-    const pipelineObj = JSON.parse(pipelineContent)
+    const pipelineObj = YAML.parse(pipelineContent)
     engine.load(pipelineObj)
     .then(() => {
         engine.start()
