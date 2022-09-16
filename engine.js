@@ -1,5 +1,6 @@
 const isObject = require('lodash/isObject')
-const { PipelineStructureError } = require('./lib/errors')
+const { PipelineStructureError, ConstructorError } = require('./lib/errors')
+const { Variable } = require('./lib/variable')
 
 const state = require('./state');
 
@@ -15,10 +16,27 @@ async function load(pipeline) {
     /* connections */
 
     /* variables */
+    try {
+        for (const vName in pipeline.variables) {
+            state.variables[vName] = new Variable(vName,
+                pipeline.variables[vName]?.initValue, {
+                type: pipeline.variables[vName]?.type,
+                feed: pipeline.variables[vName]?.feed,
+                length: pipeline.variables[vName]?.length
+            })
+        }
+    } catch (err) {
+        if (err instanceof ConstructorError)
+            return Promise.reject(err)
+        else 
+            return Promise.reject(new PipelineStructureError('Invalid variable definition', err))
+    }
 
     /* callbacks */
 
     /* pipeline funcs */
+
+    console.log(state)
 
     return Promise.resolve()
 }

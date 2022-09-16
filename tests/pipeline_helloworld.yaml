@@ -1,7 +1,7 @@
 connections:
 
 variables:
-    -myVar:
+    myVar:
         initValue: ""
 
 callbacks:
