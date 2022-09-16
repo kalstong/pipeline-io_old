@@ -1,12 +1,14 @@
 const isObject = require('lodash/isObject')
 const { PipelineStructureError } = require('./lib/errors')
 
+const state = require('./state');
+
 async function load(pipeline) {
 
     if (!isObject(pipeline))
-        Promise.reject(new PipelineStructureError('Invalid structure',
+        return Promise.reject(new PipelineStructureError('Invalid structure',
             {
-                expected: {},
+                expected: "object",
                 got: pipeline
             }))
 
