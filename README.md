@@ -20,22 +20,25 @@ npm start -- --pipeline tests/pipeline_helloworld.json
 # Documentation
 
 ## Pipeline structure
-Pipeline is a `json` file with have the following `objects`:
+Pipeline is a `yaml` file with the following `nodes`:
 ```
-{
-    "connections": {},
-    "variables": {},
-    "callbacks": {},
-    "functions": {},
-    "start": []
-}
+connections:
+
+variables:
+
+callbacks:
+
+functions:
+
+start: []
+
 ```
 
-As the name suggests, connection definitions are declared under the `connections` object. The same for variables and callbacks.
+As the name suggests, connection definitions are declared under the `connections` `node`. The same for variables and callbacks.
 
-The functions are declared under the `functions` object.
+The functions are declared under the `functions` `node`.
 
-`start` array can be used to specify witch pipeline functions are executed as soon as the pipeline are loaded and the connections established.
+`start` array can be used to specify witch pipeline functions are executed as soon as the pipeline are loaded and the connections established and the variables defined.
 
 ## Connections
 ... to be written
@@ -43,55 +46,33 @@ The functions are declared under the `functions` object.
 ## Variables
 ### `initValue`
 ```
-{
-    "variables": {
-        "myVar": {
-            initValue: ""
-        }
-    }
-}
+variables:
+    myVar:
+        initValue: ""
 ```
-### `onSet` trigger a function or antoher variable
+### `onSet` trigger a function or another variable
 When some value are set into these variable, the variable itself invokes a function(s) by the name inside the `fn` array and pass by parameter is value.
-The same happens when the `onSet` finds a `var`, in that case the variables found inside the `var` arrays will be settled with is value
+The same happens when the `onSet` finds a `var`, in that case the variables found inside the `var` arrays will be settled with is value. Multiple `onSet` can be defined.
 ```
-{
-    "variables": {
-        "myVar": {
-            initValue: "",
-            onSet: [
-                {
-                    "fn" : [
-                        "myFunc"
-                    ],
-                    "var" : [
-                        "myOtherVariable"
-                    ]
-                }
-            ]
-        }
-    }
-}
+variables:
+    myVar:
+        initValue: ""
+        - onSet:
+            fn: [ "myFunc" ]
+            var: [ "myOtherVariable" ]
 ```
-### `onSet` trigger a function or antoher variable under a condition
-In this case the functions or variables defined inside the `onSet`will be settled or invoked if the condition `variable -> operator -> value` are met.
-In these case, whenever the `myVar2` value are `!==` from `someValue` the function `myFunc` will be invoked. If the myVar2 are a object, a `path: [ "inner", "object", "path" ]` can be added beside the `op` and `value`.
+### `onSet` trigger a function or another variable under a condition
+In this case the functions or variables defined inside the `onSet` will be settled or invoked if the condition `variable -> operator -> value` are met.
+In these case, whenever the `myVar2` value are `!==` from `someValue` the function `myFunc` will be invoked. If the myVar2 are a object, a `path: [ "inner", "object", "path" ]` can be added beside the `op` and `value`. Multiple `onSet` can be defined.
 
 ```
-{
-    "variables": {
-        "myVar2": {
-            initValue: "",
-            onSet: [
-                {
-                    "op": "!=="
-                    "value" : "someValue",
-                    "fn" : [ "myFunc" ]
-                }
-            ]
-        }
-    }
-}
+variables:
+    myVar2:
+        initValue: ""
+        - onSet:
+            op: "!=="
+            value: "someValue"
+            fn: [ "myFunc" ]
 ```
 
 ## Callbacks
