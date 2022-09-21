@@ -1,0 +1,11 @@
+connections:
+
+variables:
+    myVar:
+        initValue: ""
+
+callbacks:
+
+pipeline:
+
+start: []

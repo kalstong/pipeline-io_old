@@ -1,38 +1,46 @@
-const path = require('path')
-const { log, utils } = require(path.join(__dirname, 'lib'))
-const package = require(path.join(__dirname, 'package.json'))
+const YAML = require('yaml')
+const { log, utils } = require('./lib')
+const package = require('./package.json')
+const engine = require('./engine')
 
-
+// Boot and welcoming
 process.title = `pipeline-io`
+log('boot').info(`Welcome to pipeline-io v.${package.version}!\nFor more information please visit ${package.homepage}\n`)
 
-log('boot').info(`Welcome to pipeline-io v.${package.version}!\nFor more information please visit ${package.homepage}`)
-
-// Arguments
-let arguments = {}
+// Load Arguments
+let args = {}
 try {
-    arguments = utils.parseArgv(process.argv, { 'pipeline': 'pipeline' }, 2)
+    args = utils.parseArgv(process.argv, { 'pipeline': 'pipeline' }, 2)
 } catch (_) {
     log('boot').warn('Failed to parse process arguments.')
 }  
 
+// Load pipeline
 try {
-    if (!arguments.pipeline) {
+    if (!args.pipeline) {
         log('pipeline').warn('No pipeline specified. Nothing to do, program will stop.')
         process.exit(0)
     }
 
-    let pipelineFile = utils.openFileSync(arguments.pipeline.value)
+    let pipelineContent = utils.openFileSync(args.pipeline.value)
     
-    if (!pipelineFile) {
+    if (!pipelineContent) {
         log('boot').warn('Pipeline specified cannot be loaded. Nothing to do, program will stop.')
         process.exit(0)
     }
 
-    let pipeline = JSON.parse(pipelineFile)
+    const pipelineObj = YAML.parse(pipelineContent)
+    engine.load(pipelineObj)
+    .then(() => {
+        engine.start()
+        .catch(err => {
+            log('engine').error('Critical error. Pipeline start has failed.', err)
+        })
+    })
+    .catch(err => {
+        log('engine').error('Critical error. Pipeline load has failed.', err)
+    })
 
-    // Parse pipeline
-    // Run setup
-    
 } catch (err) {
     log('pipeline').error('Critical error. Program will stop.', err)
     process.exit(1)
