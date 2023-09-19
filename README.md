@@ -1,3 +1,30 @@
+# pipeline-io
+
+Welcome to pipeline-io, a versatile open-source software solution designed to simplify data management and transformation tasks. While there are no releases available just yet, we're excited to provide you with a sneak peek into the capabilities and vision of this project.
+
+## Project Objective:
+
+The primary objective of pipeline-io is to empower users to effortlessly handle data from various sources and apply a wide range of data manipulation functions. Whether you need a Command-Line Interface (CLI) application or a library to integrate into your existing software, pipeline-io has you covered.
+
+## Key Features:
+
+- Pipeline-Based Data Processing: pipeline-io employs a pipeline-based approach, enabling users to create data processing workflows by connecting different data sources and applying a series of data transformation functions.
+
+- Versatile Data Connections: You can seamlessly connect to multiple data sources, including MongoDB, MS SQL, RabbitMQ, and more. These connections can serve as both input and output points within your data pipeline.
+
+- Extensive Data Manipulation Functions: pipeline-io offers a rich set of built-in functions to manipulate, transform, and enrich your data. Whether you need to clean, reshape, or aggregate data, our library provides the tools you need.
+
+## Getting Started:
+
+While we're still in the early stages of development, we're committed to providing detailed information and practical examples to help you understand how to use pipeline-io effectively. Stay tuned for updates as we work towards our first official release.
+
+## Contributions and Feedback:
+
+We believe in the power of community collaboration. pipeline-io is an open-source project, and we welcome contributions from developers, data enthusiasts, and anyone interested in improving data processing workflows. If you have ideas, suggestions, or want to get involved, please don't hesitate to reach out.
+
+Thank you for your interest in pipeline-io. We look forward to sharing more about this project with you soon. Stay tuned for updates and dive into the world of seamless data management and transformation!
+
+## Support me
 Here's the option for you to buy me a coffee - if you like my software, if you find it useful and you can, please consider this small gesture for all the hard work I've been putting into these projects.
 
 That would mean a lot to me!
@@ -6,9 +33,6 @@ Of course, don't feel pressured if you can't, I will continue to support and cre
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/kalstong)
 
-
-# pipeline-io
-Configure a pipeline to produce and manipulate data.
 
 # How to start
 
