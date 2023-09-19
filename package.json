@@ -1,7 +1,7 @@
 {
   "name": "pipeline-io",
   "version": "0.0.1",
-  "description": "pipeline engine with outside connectors and manipulation functions",
+  "description": "A versatile open-source software solution designed to simplify data management and transformation tasks.',
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
