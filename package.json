@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/kalstong/pipeline-io#readme",
   "devDependencies": {
-    "pkg": "^5.8.0"
+    "pkg": "^5.8.1"
   },
   "dependencies": {
     "lodash": "^4.17.21",
