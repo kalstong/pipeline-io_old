@@ -1,13 +1,17 @@
 {
   "name": "pipeline-io",
   "version": "0.0.1",
-  "description": "A versatile open-source software solution designed to simplify data management and transformation tasks.',
+  "description": "A versatile open-source software solution designed to simplify data management and transformation tasks.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "pkg:linux": "PKG_CACHE_PATH=.pkg-cache pkg --config package.json --targets node14-linux-x64 --compress GZip --output .build/pipeline-io index.js",
-    "pkg:windows": "PKG_CACHE_PATH=.pkg-cache pkg --targets node14-windows-x64 --compress GZip --output .build/pipeline-io.exe --options max-old-space-size=1024 index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
+    "start": "node dist/index.js",
+    "dev": "nodemon",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "test": "jest --config jestconfig.json --passWithNoTests",
+    "pkg:linux": "PKG_CACHE_PATH=.pkg-cache pkg --config package.json --targets node18-linux-x64 --compress GZip --output .build/pipeline-io index.js",
+    "pkg:windows": "PKG_CACHE_PATH=.pkg-cache pkg --targets node18-windows-x64 --compress GZip --output .build/pipeline-io.exe --options max-old-space-size=1024 index.js"
   },
   "repository": {
     "type": "git",
@@ -21,16 +25,32 @@
     "low-code",
     "ETL"
   ],
-  "author": "Ricardo Silva aka kalstong",
+  "author": "Ricardo Silva",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/kalstong/pipeline-io/issues"
   },
   "homepage": "https://github.com/kalstong/pipeline-io#readme",
   "devDependencies": {
-    "pkg": "^5.8.1"
+    "@types/lodash": "^4.14.198",
+    "@types/node": "^20.6.3",
+    "nodemon": "^3.0.1",
+    "pkg": "^5.8.1",
+    "ts-node": "^10.9.1"
   },
   "dependencies": {
+    "@types/jest": "^29.5.4",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "i": "^0.3.7",
+    "jest": "^29.6.4",
     "lodash": "^4.17.21",
+    "npm": "^10.1.0",
+    "prettier": "^3.0.3",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.2.2",
     "winston": "^3.10.0",
     "winston-daily-rotate-file": "^4.7.1",
     "yaml": "^2.3.2"
