@@ -1,38 +1,41 @@
-const fs = require('fs');
+import fs from 'node:fs';
+import path from 'path';
 
-function isArray(a) { return Array.isArray(a); }
+export function isObject(o: object) { return Object.prototype.toString.call(o) === "[object Object]"; }
 
-function isObject(o) { return Object.prototype.toString.call(o) === "[object Object]"; }
+export function openFileSync(filepath: string, encoding: BufferEncoding = 'utf8') {
+    try {
+        fs.accessSync(filepath, fs.constants.F_OK);
+        return fs.readFileSync(filepath, { encoding })
+    } catch (error) {
+        // ignore error
+    }
 
-function openFileSync(filepath, encoding = 'utf8') {
+    try {
+        const _filepath = path.join(process.cwd(), filepath)
+        fs.accessSync(_filepath, fs.constants.F_OK);
+        return fs.readFileSync(_filepath, { encoding })
+    } catch (error) {
+        // ignore error
+    }
 
-	try {
-		fs.accessSync(filepath, fs.constants.F_OK);
-		return fs.readFileSync(filepath, encoding)
-	} catch (_) {}
-
-	try {
-		let _filepath = path.join(process.cwd(), filepath)
-		fs.accessSync(_filepath, fs.constants.F_OK);
-		return fs.readFileSync(_filepath, encoding)
-	} catch (_) {}
-
-	return undefined
+    return undefined
 }
 
-function parseArgv(argv, renameMap, skip = 0) {
-	if (!isArray(argv))
+
+export function parseArgv(argv: string[], renameMap: Record<string, string> , skip = 0) {
+	if (!Array.isArray(argv))
 		return null;
 	if (renameMap && !isObject(renameMap))
 		return null;
 	if (!renameMap)
 		renameMap = {};
 
-	const args = {};
+	const args: Record<string, Record<string, unknown>> = {};
 	for (let i = skip > 0 ? skip : 0; i < argv.length; i++) {
 		let longSwitch = false;
 		let shortSwitch = false;
-		let token = argv[i];
+		let token: string= argv[i];
 		let value = undefined;
 
 		if (token.startsWith("--") && token.length > 2) {
@@ -72,11 +75,4 @@ function parseArgv(argv, renameMap, skip = 0) {
 	}
 
 	return args;
-}
-
-module.exports = {
-	isArray,
-	isObject,
-	openFileSync,
-	parseArgv
 }

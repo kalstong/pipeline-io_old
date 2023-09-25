@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "outDir": "dist",
+      "target": "ES6",
+      "module": "commonjs",
+      "declaration": true,
+      "noImplicitAny": true,
+      "esModuleInterop": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "resolveJsonModule": true,
+      "sourceMap": true,
+      "moduleResolution": "node",
+      "rootDir": "src",
+    },
+  
+    "include": ["src"], // which files to compile
+    "exclude": ["node_modules", "**/__tests__/*"] // which files to skip
+  }
