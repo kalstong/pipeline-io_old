@@ -1,7 +1,7 @@
 {
   "name": "pipeline-io",
   "version": "0.0.1",
-  "description": "pipeline engine with outside connectors and manipulation functions",
+  "description": "A versatile open-source software solution designed to simplify data management and transformation tasks.",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
@@ -35,7 +35,7 @@
     "@types/lodash": "^4.14.198",
     "@types/node": "^20.6.3",
     "nodemon": "^3.0.1",
-    "pkg": "^5.8.0",
+    "pkg": "^5.8.1",
     "ts-node": "^10.9.1"
   },
   "dependencies": {
@@ -51,8 +51,8 @@
     "prettier": "^3.0.3",
     "ts-jest": "^29.1.1",
     "typescript": "^5.2.2",
-    "winston": "^3.8.2",
+    "winston": "^3.10.0",
     "winston-daily-rotate-file": "^4.7.1",
-    "yaml": "^2.1.1"
+    "yaml": "^2.3.2"
   }
 }
