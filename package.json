@@ -33,7 +33,7 @@
   "homepage": "https://github.com/kalstong/pipeline-io#readme",
   "devDependencies": {
     "@types/lodash": "^4.14.200",
-    "@types/node": "^20.8.6",
+    "@types/node": "^20.10.6",
     "nodemon": "^3.0.1",
     "pkg": "^5.8.1",
     "ts-node": "^10.9.1"
